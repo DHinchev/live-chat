@@ -4,7 +4,7 @@ class RoomList extends React.Component {
     render () {
         const orderRooms = [...this.props.rooms].sort((a,b) => a.id-b.id);
         return (
-            <div className="rooms-list">
+            <div className={`rooms-list ${this.props.toggle}`}>
                 <ul>
                 <h3>Your rooms:</h3>
                     {orderRooms.map(room => {

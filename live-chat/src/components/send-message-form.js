@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Send from '../assets/send.svg';
 
 class SendMessageForm extends React.Component {
     
     constructor() {
-        super()
+        super();
         this.state = {
             message: ''
-        }
+        };
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -14,15 +15,15 @@ class SendMessageForm extends React.Component {
     handleChange(e) {
         this.setState({
             message: e.target.value
-        })
+        });
     }
     
     handleSubmit(e) {
-        e.preventDefault()
-        this.props.sendMessage(this.state.message)
+        e.preventDefault();
+        this.props.sendMessage(this.state.message);
         this.setState({
             message: ''
-        })
+        });
     }
     
     render() {
@@ -36,6 +37,13 @@ class SendMessageForm extends React.Component {
                     value={this.state.message}
                     placeholder="Type your message and hit ENTER"
                     type="text" />
+                    <button type="submit" className="send-button">
+                        <img 
+                        className="send-icon"
+                        alt="send icon"
+                        src={Send}
+                        />
+                </button>
             </form>
         )
     }

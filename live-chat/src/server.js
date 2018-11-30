@@ -5,8 +5,8 @@
     const app = express();
 
     const chatkit = new Chatkit.default({
-      instanceLocator: 'v1:us1:08ecfd23-3e02-411e-8f36-93b076a82d4e',
-      key: 'a3bf21cf-b25c-458c-a2f6-e7e4247815a4:+nGBZhegXySG9prnXR9fnLNHToQ/K+YPxV5nzkDS5iA=',
+      instanceLocator: "v1:us1:0132844b-4fab-4158-bc85-1fa1942034b2",
+      key: "ed9eb934-5d6d-40ce-9570-c932a33dd56d:VFHrmbXkwsAiTQIMknIdOQJAGsg0C+bLidFDUhAE27w=",
     });
 
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,7 +15,6 @@
 
     app.post('/users', (req, res) => {
       const { username } = req.body;
-      console.log();
       chatkit
         .createUser({ 
         id: username, 
@@ -30,6 +29,7 @@
           }
         });
     });
+
     const PORT = 3001;
     app.listen(PORT, err => {
       if (err) {
@@ -37,4 +37,4 @@
       } else {
         console.log(`Running on port ${PORT}`);
       }
-    })
+    });

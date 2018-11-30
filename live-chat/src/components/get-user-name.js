@@ -6,13 +6,13 @@
          username: '',
        };
 
-       this.onSubmit = this.onSubmit.bind(this)
-       this.onChange = this.onChange.bind(this)
+       this.onSubmit = this.onSubmit.bind(this);
+       this.onChange = this.onChange.bind(this);
      }
      
      onSubmit(e) {
        e.preventDefault();
-       this.props.onSubmit(this.state.username)
+       this.props.onSubmit(this.state.username);
      }
 
      onChange(e) {
@@ -21,16 +21,17 @@
 
       render() {
         return (
-          <div>
+          <div className="signInContent">
             <div>
-              <h2>What is your username?</h2>
+              <h2 className="signInTitle">What is your username?</h2>
               <form onSubmit={this.onSubmit}>
                 <input
                   type="text"
+                  className="signInInput"
                   placeholder="Your full name"
                   onChange={this.onChange}
                 />
-                <input type="submit" />
+                <input className="signInSubmitButton" type="submit" />
               </form>
             </div>
           </div>

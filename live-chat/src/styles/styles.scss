@@ -10,27 +10,91 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: system-ui;
+    font-family: 'Roboto Mono';
     font-weight: 200;
-    color: 	#3e5869; 
+    color: 	var(--main-text-color); 
 }
 
-#root {
+.signIn {
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
+.signInInput {
+    width: 320px;
+    height: 60px;
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    border: 0;
+    border-bottom: 2px solid var(--main-text-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.signInInput:focus,
+.signInSubmitButton:focus {
+    outline: none;
+}
+
+.signInTitle {
+    text-align: center;
+}
+
+.signInSubmitButton {
+    width: 160px;
+    height: 40px;
+    font-family: 'Roboto Mono';
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid var(--main-text-color);
+    background-color: var(--main-color);
+    color: var(--main-text-color);
+    display: block;
+}
+
+#root,
+.app {
     height: 100%;
 }
 
-.app {
+.chat {
     display: grid;
     height: 100%;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
     grid-template-areas: 
-        "r r m m m m m m"
-        "r r m m m m m m"
-        "r r m m m m m m"
-        "r r m m m m m m"
-        "r r m m m m m m"
-        "n n f f f f f f";
+        "x x m m m m m m"
+        "x x m m m m m m"
+        "x x m m m m m m"
+        "x x m m m m m m"
+        "x x m m m m m m"
+        "x x f f f f f f";
+}
+
+.mobileSlideRight {
+    grid-area: x;
+}
+
+.mobileSlideRight {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    grid-template-areas: 
+        "r"
+        "r"
+        "r"
+        "l"
+        "l"
+        "n";
 }
 
 .new-room-form {
@@ -49,6 +113,10 @@ html, body {
     grid-area: f;
 }
 
+.people-online-list {
+    grid-area: l;
+}
+
 /* REST OF CSS */
 .rooms-list {
     box-sizing: border-box;
@@ -59,6 +127,7 @@ html, body {
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%;
+    min-width: 230px;
 }
 
 .rooms-list > ul {
@@ -89,6 +158,7 @@ html, body {
 
 .new-room-form {
     position: relative;
+    min-width: 218px;
     padding: 0 5px;
     background: var(--main-color);
     color: var(--main-text-color);
@@ -104,6 +174,7 @@ html, body {
 
 .new-room-form input {
     width: 135px;
+    font-family: 'Roboto Mono';
     background: var(--main-color);
     color: var(--secondary-color);
 }
@@ -188,6 +259,7 @@ html, body {
     background: var(--main-color);
     color: var(--secondary-color);
     font-weight: 200;
+    font-family: 'Roboto Mono';
 }
 
 .send-message-form input:focus {
@@ -214,4 +286,89 @@ html, body {
  
 ::-webkit-scrollbar-thumb {
     background: var(--main-text-color); 
+}
+
+.people-online-list {
+    min-width: 230px;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color:  var(--main-color);
+    border-right: 2px solid var(--main-text-color);
+    border-bottom: 2px solid var(--main-text-color);
+}
+
+.people-online-list li {
+    font-weight: 700;
+}
+
+.online {
+    color: var(--secondary-color);
+}
+
+.offline {
+    color: var(--main-text-color);
+}
+
+.toggle-icon {
+    display: none;
+}
+
+.send-button {
+    background-color: transparent;
+    border: none;
+}
+
+.send-button:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 915px) {
+    .mobileSlideRight.hide {
+        position: fixed;
+        transform:translateX(-230px);
+        transition: ease-in 0.5s;
+    }
+
+    .mobileSlideRight.show {
+        position: fixed;
+        transform:translateX(0px);
+        transition: ease-out 0.5s;
+        z-index: 10;
+        min-width: 320px;
+        max-width: 400px;
+    }
+
+    .toggle-icon {
+        position: absolute;
+        display: block;
+        top: 20px;
+        right: 20px;
+        z-index: 11;
+    }
+
+    .send-message-form {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        border-top: 2px solid var(--main-text-color);
+    }
+
+    .message-list {
+        position: fixed;
+    }
+
+    .chat {
+        display: grid;
+        height: 100%;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+        grid-template-areas: 
+            "m m m m m m m m"
+            "m m m m m m m m"
+            "m m m m m m m m"
+            "m m m m m m m m"
+            "m m m m m m m m"
+            "f f f f f f f f";
+    }
+
 }
