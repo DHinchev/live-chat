@@ -28,7 +28,6 @@ class Chat extends React.Component {
       this.subscribeToRoom = this.subscribeToRoom.bind(this);
       this.getRooms = this.getRooms.bind(this);
       this.createRoom = this.createRoom.bind(this);
-      this.deleteRoom = this.deleteRoom.bind(this);
       this.sendTypingEvent = this.sendTypingEvent.bind(this);
       this.toggleMenu = this.toggleMenu.bind(this);
   } 
@@ -51,9 +50,9 @@ class Chat extends React.Component {
   }
   
   getRooms() {
+      console.log(this.currentUser.rooms);
       this.currentUser.getJoinableRooms()
       .then(joinableRooms => {
-          console.log(joinableRooms);
           this.setState({
               joinableRooms,
               joinedRooms: this.currentUser.rooms
@@ -84,11 +83,9 @@ class Chat extends React.Component {
                       )
               });
             }
-          },
-          messageLimit: 100
+          }
       })
       .then(room => {
-          console.log(room);
           this.setState({
               roomId: room.id,
               users: room.users
@@ -121,20 +118,6 @@ class Chat extends React.Component {
     .catch(err => console.log('error with createRoom: ', err));
   }
 
-  //=============================================================
-    deleteRoom(roomId) {
-        console.log(roomId);
-        this.currentUser.deleteRoom({ roomId: roomId })
-    .then(() => {
-        console.log(`Deleted room with ID: ${roomId}`);
-    })
-    .catch(err => {
-        console.log(`Error deleted room ${roomId}: ${err}`);
-    });
-    }
-
-  //=============================================================
-
   toggleMenu() {
     this.setState(prevState => ({
         toggleState: !prevState.toggleState
@@ -160,7 +143,6 @@ class Chat extends React.Component {
                     <RoomList
                         roomId={this.state.roomId}
                         subscribeToRoom={this.subscribeToRoom}
-                        deleteRoom={this.deleteRoom}
                         rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
                     <NewRoomForm 
                         createRoom={this.createRoom} />

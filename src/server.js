@@ -29,33 +29,7 @@
           }
         });
     });
-// ========================= remove or modify this
-    app.post('/roles', (req, res) => {
-      const { username } = req.body;
 
-      chatkit.createRoomRole({
-        name: 'deletePrevilage',
-        permissions: ['room:delete'],
-      })
-        .then(() => {
-          console.log('Room role created successfully');
-        }).catch((err) => {
-          console.log(err);
-        });
-
-        chatkit.assignRoomRoleToUser({
-          userId: username,
-          name: 'deletePrevilage',
-          roomId: '234',
-        })
-          .then(() => {
-            console.log('Assigned room role successfully');
-          }).catch((err) => {
-            console.log(err);
-          });
-    });
-
-// ===================================================
     const PORT = 3001;
     app.listen(PORT, err => {
       if (err) {

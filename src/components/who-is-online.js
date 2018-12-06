@@ -14,7 +14,7 @@ class WhosOnlineList extends Component {
               )
             }
             return (
-              <WhosOnlineListItem key={index} presenceState={user.presence.state} >
+              <WhosOnlineListItem key={index} presenceState={user.presence.state}>
                 {user.name}
               </WhosOnlineListItem>
             )

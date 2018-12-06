@@ -4,7 +4,7 @@ class WhosOnlineListItem extends Component {
   render() {
     return (
       <li className={this.props.presenceState}>
-        {this.props.children} <span>{this.props.presenceState}</span>
+        {this.props.children}
       </li>
     )
   }

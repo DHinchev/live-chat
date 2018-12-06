@@ -15,7 +15,7 @@ class RoomList extends React.Component {
                                     onClick={() => this.props.subscribeToRoom(room.id)}
                                     href="#">
                                     # {room.name}
-                                </a> <button type="submit" onClick={this.props.deleteRoom(room.id)}>delete</button>
+                                </a>
                             </li>
                         )
                     })}
